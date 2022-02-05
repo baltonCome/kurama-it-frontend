@@ -1,31 +1,36 @@
-import { useEffect, useState } from "react";
+import { useState, useEffect } from 'react';
 import { Outlet, Link } from "react-router-dom";
 import Container from 'react-bootstrap/Container';
-import axios from 'axios';
+import FetchJobs from './components/FetchJobs';
+import api from './services/Api';
 
-function App(){
+const App = () => {
 
-    const [jobs, setJobs] = useState([]);
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    const [jobs, setJobs] = useState([])
 
-    axios.get('http://localhost:8000/sanctum/csrf-cookie', { withCredentials: true, headers : { 'Content-Type' : 'application/json' } });
-    useEffect(() => {
-        axios.get("http://localhost:8000/api/job/java", { withCredentials : true }).then(({data}) => {
-            setJobs(data);
-        })    
-        console.log(jobs);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
-       
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    useEffect( () => {
+        api.get('')
+        .then((response) => {
+            setJobs(response.data.jobs)
+            console.log(response)
+        })
+        .catch(error => console.log(error))
+    }, [])
+
     return ( 
-        <>
-            <Container>
-                <h1>Hello Boys</h1>
-                <Link to="/home">Home</Link>
-                <p></p>
-                <Link to="/login">Login</Link>
-                <Outlet />
-            </Container>
-        </>
+    
+        <Container>
+            <>
+                { <FetchJobs jobs= {jobs} /> }
+            </>
+            <h1>Hello Boys</h1>
+            <Link to="/home">Home</Link>
+            <p></p>
+            <Link to="/login">Login</Link>
+            <Outlet />
+        </Container>
     )
 }
 
