@@ -3,11 +3,9 @@ import Job from './Job';
  
 const FetchJobs = ( { jobs }) => {
 
-  const data = Array.from(jobs)
-
   return (
     <>
-      {data.map((job) => (
+      {jobs.map((job) => (
           <Job
             key={job.id}
             job={job}

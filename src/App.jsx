@@ -6,15 +6,13 @@ import api from './services/Api';
 
 const App = () => {
 
-    // eslint-disable-next-line react-hooks/rules-of-hooks
     const [jobs, setJobs] = useState([])
 
-    // eslint-disable-next-line react-hooks/rules-of-hooks
     useEffect( () => {
         api.get('')
-        .then((response) => {
-            setJobs(response.data.jobs)
-            console.log(response)
+        .then((res) => {
+            setJobs(res.data.jobs)
+            console.log(res)
         })
         .catch(error => console.log(error))
     }, [])
@@ -25,7 +23,6 @@ const App = () => {
             <>
                 { <FetchJobs jobs= {jobs} /> }
             </>
-            <h1>Hello Boys</h1>
             <Link to="/home">Home</Link>
             <p></p>
             <Link to="/login">Login</Link>
