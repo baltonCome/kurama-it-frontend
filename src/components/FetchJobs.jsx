@@ -1,7 +1,7 @@
 import React from 'react';
 import Job from './Job';
  
-const FetchJobs = ( { jobs }) => {
+const FetchJobs = ({ jobs }) => {
 
   return (
     <>
