@@ -1,5 +1,7 @@
 import React from 'react';
-import { Card, Button, Badge } from 'react-bootstrap';
+import Card from 'react-bootstrap/Card'
+import Badge from 'react-bootstrap/Badge'
+import Button from 'react-bootstrap/Button'
 import moment from 'moment';
 import ReadMore from 'read-more-react';
 

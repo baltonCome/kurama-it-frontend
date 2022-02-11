@@ -1,8 +1,11 @@
 import { useState, useEffect } from 'react';
 import { Outlet, Link } from "react-router-dom";
-import Container from 'react-bootstrap/Container';
 import FetchJobs from './components/FetchJobs';
 import api from './services/Api';
+import Header from './components/Header';
+import './assets/styles/style.css';
+//import background from './assets/images/KuramaIT.svg';
+
 
 const App = () => {
 
@@ -19,7 +22,10 @@ const App = () => {
 
     return ( 
     
-        <Container>
+        <div className="font-link smooth-scrooling" /*style={{ backgroundImage: `url(${background})` }}*/>
+            <>
+                <Header />
+            </>
             <>
                 { <FetchJobs jobs= {jobs} /> }
             </>
@@ -27,7 +33,7 @@ const App = () => {
             <p></p>
             <Link to="/login">Login</Link>
             <Outlet />
-        </Container>
+        </div>
     )
 }
 

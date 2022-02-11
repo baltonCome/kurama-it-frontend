@@ -5,12 +5,13 @@ const FetchJobs = ({ jobs }) => {
 
   return (
     <>
-      {jobs.map((job) => (
+      { jobs ? (jobs.map((job) => (
           <Job
             key={job.id}
             job={job}
           />
-        ))}
+        ))) : (' There are no Jobs to show! ')
+      }
     </>
   )
 }
