@@ -12,7 +12,7 @@ const Job = ({ job }) => {
     
     return (
         
-        <Card className="my-4">
+        <Card className="my-4 shadow">
             <Card.Body>
                 <Card.Title> 
                     <div className="h5">

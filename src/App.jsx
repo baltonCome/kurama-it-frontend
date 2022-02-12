@@ -4,6 +4,9 @@ import FetchJobs from './components/FetchJobs';
 import api from './services/Api';
 import Header from './components/Header';
 import './assets/styles/style.css';
+import ForEmployers from './components/ForEmployers';
+import ForSeekers from './components/ForSeekers';
+import Skills from './components/Skills';
 //import background from './assets/images/KuramaIT.svg';
 
 
@@ -25,6 +28,15 @@ const App = () => {
         <div className="font-link smooth-scrooling" /*style={{ backgroundImage: `url(${background})` }}*/>
             <>
                 <Header />
+            </>
+            <>
+                <ForEmployers />
+            </>
+            <>
+                <Skills />
+            </>
+            <>
+                <ForSeekers />
             </>
             <>
                 { <FetchJobs jobs= {jobs} /> }
