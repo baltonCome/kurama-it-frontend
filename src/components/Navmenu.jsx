@@ -9,9 +9,9 @@ import Nav from 'react-bootstrap/Nav';
 const Navmenu = () => {
 
     return (
-        <Navbar bg="light" expand="lg" sticky="top">
+        <Navbar bg="light" expand="lg" sticky='top'>
             <Container fluid>
-                <Navbar.Toggle bsPrefix='navbar-toggler' aria-controls="offcanvasNavbar"/>
+                <Navbar.Toggle bsPrefix='navbar-toggler' aria-controls="offcanvasNavbar" className="border-0"/>
                 <Navbar.Brand href='#'>
                     <img
                         src={Logo}

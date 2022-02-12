@@ -7,6 +7,8 @@ import './assets/styles/style.css';
 import ForEmployers from './components/ForEmployers';
 import ForSeekers from './components/ForSeekers';
 import Skills from './components/Skills';
+import WhyKurama from './components/WhyKurama';
+import Footer from './components/Footer';
 //import background from './assets/images/KuramaIT.svg';
 
 
@@ -38,9 +40,16 @@ const App = () => {
             <>
                 <ForSeekers />
             </>
-            <>
+                        <>
                 { <FetchJobs jobs= {jobs} /> }
             </>
+            <>
+                <WhyKurama />
+            </>
+            <>
+                <Footer />
+            </>
+
             <Link to="/home">Home</Link>
             <p></p>
             <Link to="/login">Login</Link>

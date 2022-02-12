@@ -4,6 +4,7 @@ import Badge from 'react-bootstrap/Badge'
 import Button from 'react-bootstrap/Button'
 import moment from 'moment';
 import ReadMore from 'read-more-react';
+import Container from 'react-bootstrap/Container';
 
 const Job = ({ job }) => {
 
@@ -12,42 +13,44 @@ const Job = ({ job }) => {
     
     return (
         
-        <Card className="my-4 shadow">
-            <Card.Body>
-                <Card.Title> 
-                    <div className="h5">
-                        { job.title }
-                    </div> 
-                </Card.Title>
-                <Card.Subtitle>
-                    <div className="text-muted my-2 font-weight-light">
-                        { job.user.name}{',  '} { moment(job.created_at).fromNow() }!
+        <Container>
+            <Card className="my-4 shadow p-3 bg-light border-0">
+                <Card.Body>
+                    <Card.Title> 
+                        <div className="h5">
+                            { job.title }
+                        </div> 
+                    </Card.Title>
+                    <Card.Subtitle>
+                        <div className="text-muted my-2 font-weight-light">
+                            { job.user.name}{',  '} { moment(job.created_at).fromNow() }!
+                        </div>
+                        <h5 className="mb-2">
+                            <Badge className="mr-2" pill bg="secondary"> { job.job_type } </Badge>{' '} 
+                            <Badge pill bg="info"> {  job.location } </Badge>
+                        </h5>
+                    </Card.Subtitle>
+                    <Card.Text>
+                        <ReadMore text= { job.description } readMoreText="Read More!" />
+                    </Card.Text>
+                    <h4 className='mb-2'>
+                        <Badge pill bg='warning' className="mr-2"> { job.salary } $ </Badge>
+                    </h4>
+                    <div>
+                        {   
+                            skills.map((skill) => (
+                                <Badge pill bg='success' style = {{ margin: 2 }}>
+                                    {skill}
+                                </Badge>
+                            )) 
+                        }   
                     </div>
-                    <h5 className="mb-2">
-                        <Badge className="mr-2" pill bg="secondary"> { job.job_type } </Badge>{' '} 
-                        <Badge pill bg="info"> {  job.location } </Badge>
-                    </h5>
-                </Card.Subtitle>
-                <Card.Text>
-                    <ReadMore text= { job.description } readMoreText="Read More!" />
-                </Card.Text>
-                <h4 className='mb-2'>
-                    <Badge pill bg='warning' className="mr-2"> { job.salary } $ </Badge>
-                </h4>
-                <div>
-                    {   
-                        skills.map((skill) => (
-                            <Badge pill bg='success' style = {{ margin: 2 }}>
-                                {skill}
-                            </Badge>
-                        )) 
-                    }   
-                </div>
-                <div className='my-2'>
-                    <Button variant='primary'> Apply </Button>
-                </div>        
-            </Card.Body>
-        </Card>
+                    <div className='my-2'>
+                        <Button variant='primary' className="rounded-pill"> Apply </Button>
+                    </div>        
+                </Card.Body>
+            </Card>
+        </Container>
     )
 }
 
