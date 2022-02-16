@@ -9,6 +9,7 @@ import ForSeekers from './components/ForSeekers';
 import Skills from './components/Skills';
 import WhyKurama from './components/WhyKurama';
 import Footer from './components/Footer';
+import Feedback from './components/Feedback';
 //import background from './assets/images/KuramaIT.svg';
 
 
@@ -25,6 +26,10 @@ const App = () => {
         .catch(error => console.log(error))
     }, [])
 
+    const addFeedback = (feedback) => {
+        console.log(feedback.rating, feedback.feedback)
+    }
+
     return ( 
     
         <div className="font-link smooth-scrooling" /*style={{ backgroundImage: `url(${background})` }}*/>
@@ -40,11 +45,14 @@ const App = () => {
             <>
                 <ForSeekers />
             </>
-                        <>
+            <>
                 { <FetchJobs jobs= {jobs} /> }
             </>
             <>
                 <WhyKurama />
+            </>
+            <>
+                <Feedback onFeedback={addFeedback} />
             </>
             <>
                 <Footer />

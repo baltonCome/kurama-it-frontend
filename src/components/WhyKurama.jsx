@@ -68,7 +68,7 @@ const WhyKurama = () => {
                         </Carousel.Item>
                     </Carousel>
                 </Col>
-                <Col className="position-relative">
+                <Col className="position-relative ">
                     <div className='mb-4'>
                         <img
                             className='img-fluid'
@@ -77,7 +77,7 @@ const WhyKurama = () => {
                             width="250"
                         />
                     </div>
-                    <div>
+                    <div className=''>
                         <p>With the increase in the use of technologies, there are several people and entities that seek services from professionals in the area of technology. Other than that, technology has been increasingly present in our daily lives. With this website we seek to bring together those who have the need with those who have the ability.</p>
                        <p> We have a problem, we need a developer or design specialist for example, where can I find it? Will  he be reliable?... These and more similar questions are what our site seeks to solve in a easy and   effective way!</p>
                     </div>
