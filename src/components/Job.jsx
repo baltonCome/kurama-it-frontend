@@ -14,7 +14,7 @@ const Job = ({ job }) => {
     return (
         
         <Container>
-            <Card className="my-4 shadow p-3 bg-light border-0">
+            <Card className="my-4 p-3 bg-light border-0">
                 <Card.Body>
                     <Card.Title> 
                         <div className="h5">
@@ -46,7 +46,7 @@ const Job = ({ job }) => {
                         }   
                     </div>
                     <div className='my-2'>
-                        <Button variant='primary' className="rounded-pill"> Apply </Button>
+                        <Button variant='primary' className="float-end"> Apply </Button>
                     </div>        
                 </Card.Body>
             </Card>

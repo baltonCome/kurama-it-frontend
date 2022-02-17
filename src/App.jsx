@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Outlet, Link } from "react-router-dom";
+//import { Outlet, Link } from "react-router-dom";
 import FetchJobs from './components/FetchJobs';
 import api from './services/Api';
 import Header from './components/Header';
@@ -9,18 +9,29 @@ import ForSeekers from './components/ForSeekers';
 import Skills from './components/Skills';
 import WhyKurama from './components/WhyKurama';
 import Footer from './components/Footer';
-import Feedback from './components/Feedback';
+import SendFeedback from './components/SendFeedback';
+import FetchFeedbacks from './components/FetchFeedbacks';
 //import background from './assets/images/KuramaIT.svg';
 
 
 const App = () => {
 
     const [jobs, setJobs] = useState([])
+    const [feedbacks, setFeedbacks] = useState([])
 
     useEffect( () => {
         api.get('')
         .then((res) => {
             setJobs(res.data.jobs)
+            console.log(res)
+        })
+        .catch(error => console.log(error))
+    }, [])
+
+    useEffect( () => {
+        api.get('/feedback')
+        .then((res) => {
+            setFeedbacks(res.data.feedbacks)
             console.log(res)
         })
         .catch(error => console.log(error))
@@ -52,16 +63,19 @@ const App = () => {
                 <WhyKurama />
             </>
             <>
-                <Feedback onFeedback={addFeedback} />
+                <SendFeedback onFeedback={addFeedback} />
+            </>
+            <>
+                <FetchFeedbacks feedbacks={feedbacks} />
             </>
             <>
                 <Footer />
             </>
 
-            <Link to="/home">Home</Link>
+            {/* <Link to="/home">Home</Link>
             <p></p>
             <Link to="/login">Login</Link>
-            <Outlet />
+            <Outlet /> */}
         </div>
     )
 }
