@@ -4,7 +4,7 @@ import moment from 'moment';
 import ReadMore from 'read-more-react';
 import Container from 'react-bootstrap/Container';
 import { Rating } from 'react-simple-star-rating';
-import Button from 'react-bootstrap/Button'
+import Button from 'react-bootstrap/Button';
 
 const Feedback = ({ feedback }) => {
 
@@ -17,7 +17,7 @@ const Feedback = ({ feedback }) => {
                 <Card.Body>
                     <Card.Title> 
                         <div className="h5">
-                            { feedback.user.name }
+                            { feedback.user.username }
                         </div> 
                     </Card.Title>
                     <Card.Subtitle>

@@ -67,7 +67,7 @@ const SendFeedback = ({ onFeedback }) => {
                                 placeholder="Your Feedback" 
                                 className="form-control" 
                                 name="" id="" 
-                                rows="3"
+                                rows="4"
                                 onChange={(e) => setFeedback(e.target.value)}
                                 >
                             </textarea>

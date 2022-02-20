@@ -20,7 +20,7 @@ const App = () => {
     const [feedbacks, setFeedbacks] = useState([])
 
     useEffect( () => {
-        api.get('')
+        api.get('',{})
         .then((res) => {
             setJobs(res.data.jobs)
             console.log(res)
@@ -44,7 +44,7 @@ const App = () => {
     return ( 
     
         <div className="font-link smooth-scrooling" /*style={{ backgroundImage: `url(${background})` }}*/>
-            <>
+            {/* <>
                 <Header />
             </>
             <>
@@ -61,7 +61,7 @@ const App = () => {
             </>
             <>
                 <WhyKurama />
-            </>
+            </> */}
             <>
                 <SendFeedback onFeedback={addFeedback} />
             </>

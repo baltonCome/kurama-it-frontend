@@ -23,7 +23,7 @@ const Job = ({ job }) => {
                     </Card.Title>
                     <Card.Subtitle>
                         <div className="text-muted my-2 font-weight-light">
-                            { job.user.name}{',  '} { moment(job.created_at).fromNow() }!
+                            { job.user.username}{',  '} { moment(job.created_at).fromNow() }!
                         </div>
                         <h5 className="mb-2">
                             <Badge className="mr-2" pill bg="secondary"> { job.job_type } </Badge>{' '} 
