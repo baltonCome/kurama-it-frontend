@@ -11,6 +11,8 @@ import WhyKurama from './components/WhyKurama';
 import Footer from './components/Footer';
 import SendFeedback from './components/SendFeedback';
 import FetchFeedbacks from './components/FetchFeedbacks';
+import Register from './components/auth/Register';
+import Login from './components/auth/Login';
 //import background from './assets/images/KuramaIT.svg';
 
 
@@ -20,10 +22,9 @@ const App = () => {
     const [feedbacks, setFeedbacks] = useState([])
 
     useEffect( () => {
-        api.get('',{})
+        api.get('')
         .then((res) => {
             setJobs(res.data.jobs)
-            console.log(res)
         })
         .catch(error => console.log(error))
     }, [])
@@ -32,7 +33,6 @@ const App = () => {
         api.get('/feedback')
         .then((res) => {
             setFeedbacks(res.data.feedbacks)
-            console.log(res)
         })
         .catch(error => console.log(error))
     }, [])
@@ -44,9 +44,18 @@ const App = () => {
     return ( 
     
         <div className="font-link smooth-scrooling" /*style={{ backgroundImage: `url(${background})` }}*/>
-            {/* <>
+            {
+            // <>
+            //     <Register />
+            // </>
+            <>
+                <Login />
+            </>
+
+            /* <>
                 <Header />
             </>
+            
             <>
                 <ForEmployers />
             </>
@@ -61,7 +70,7 @@ const App = () => {
             </>
             <>
                 <WhyKurama />
-            </> */}
+            </>
             <>
                 <SendFeedback onFeedback={addFeedback} />
             </>
@@ -70,7 +79,7 @@ const App = () => {
             </>
             <>
                 <Footer />
-            </>
+            </> */}
 
             {/* <Link to="/home">Home</Link>
             <p></p>

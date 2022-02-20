@@ -6,7 +6,7 @@ import Container from 'react-bootstrap/Container';
 const FetchFeedbacks = ({ feedbacks }) => {
 
     const [pageNumber, setPageNumber] = useState(0);
-    const dataPerPage = 5;
+    const dataPerPage = 4;
     const seenPages = pageNumber * dataPerPage;
     const pageCount = Math.ceil(feedbacks.length/dataPerPage);
 
@@ -16,7 +16,7 @@ const FetchFeedbacks = ({ feedbacks }) => {
 
     return (
         <Container>
-            { feedbacks ? (
+            { feedbacks && (
                 feedbacks
                 .slice(seenPages, seenPages + dataPerPage)
                 .map((feedback) => (
@@ -24,7 +24,7 @@ const FetchFeedbacks = ({ feedbacks }) => {
                     key={feedback.id}
                     feedback={feedback}
                 />
-                ))) : (' There are no Feedbacks to show! ')
+                )))
             }
             <ReactPaginate 
                 previousLabel={''}

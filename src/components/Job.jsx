@@ -31,7 +31,7 @@ const Job = ({ job }) => {
                         </h5>
                     </Card.Subtitle>
                     <Card.Text>
-                        <ReadMore text= { job.description } readMoreText="Read More!" />
+                        <ReadMore text= { job.description } readMoreText="Read More!"/>
                     </Card.Text>
                     <h4 className='mb-2'>
                         <Badge pill bg='warning' className="mr-2"> { job.salary } $ </Badge>
