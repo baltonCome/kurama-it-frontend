@@ -49,7 +49,7 @@ const App = () => {
             //     <Register />
             // </>
             <>
-                <Login />
+                <Register />
             </>
 
             /* <>
