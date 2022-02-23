@@ -4,16 +4,19 @@ import App from "./App";
 //import Login from "./components/auth/Login";
 //import Home from "./pages/Home";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { AuthProvider } from './services/AuthProvider';
 
 const rootElement = document.getElementById("root");
 
 render(
-  <Router>
-     <Routes>
-      <Route path="/" element={<App />} />
-      {/* <Route path="home" element={<Home />} />
-      <Route path="login" element={<Login />} /> */}
-    </Routes>
-  </Router>,
+  <AuthProvider>
+    <Router>
+      <Routes>
+        <Route path="/" element={<App />} />
+        {/* <Route path="home" element={<Home />} />
+        <Route path="login" element={<Login />} /> */}
+      </Routes>
+    </Router>
+  </AuthProvider>,
   rootElement
 );

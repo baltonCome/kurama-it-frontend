@@ -39,7 +39,7 @@ const Register = () => {
     });
 
   const dataSubmited = () => 
-    toast.warn("User Registed!", {
+    toast.info("User Registed!", {
         position: "top-center"
     });
 
@@ -113,6 +113,11 @@ const Register = () => {
       console.log(response.accessToken);
       console.log(JSON.stringify(response))
       setSuccess(true);
+      setName('');
+      setUser('');
+      setPassword('');
+      setEmail('');
+      setMatch('');
     }catch(error){
       setSuccess(false)
       if(error.response){
@@ -152,6 +157,7 @@ const Register = () => {
                 required
                 aria-invalid={validName ? "false" : "true"}
                 onChange={(e) => setName(e.target.value)}
+                value={name}
               />
             </Form.Group>
             <Form.Group className="mb-3">
@@ -166,6 +172,7 @@ const Register = () => {
                 required
                 onChange={(e) => setUser(e.target.value)}
                 aria-describedby="nidnote"
+                value={user}
               />
               <Form.Text className="text-muted">
                 The choosen username will appear whenever you interact in our Website.
@@ -175,12 +182,13 @@ const Register = () => {
               <Form.Label htmlFor="email"> 
                 <FaMailBulk/> Email address
               </Form.Label>
-              <Form.Control 
+              <Form.Control
                 id="email"
                 type="email" 
                 placeholder="Enter email" 
                 required
                 onChange={(e) => setEmail(e.target.value)}
+                value={email}
               />
             </Form.Group>
             <Form.Group className="mb-3">
@@ -192,6 +200,7 @@ const Register = () => {
                 onChange={(e) => setPassword(e.target.value)}
                 required
                 aria-describedby="pwdnote"
+                value={password}
               />
               <Form.Text className="text-muted">
                 Choose a strong password!
@@ -206,6 +215,7 @@ const Register = () => {
                 onChange={(e) => setMatch(e.target.value)}
                 required
                 aria-describedby="confirmnote"
+                value={match}
               />
             </Form.Group>
             <Button variant="primary" type="submit">
