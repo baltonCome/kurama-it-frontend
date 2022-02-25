@@ -3,6 +3,8 @@ import Container from 'react-bootstrap/Container';
 import Card from 'react-bootstrap/Card';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 import { FaFileSignature } from 'react-icons/fa';
 import { FaUserNinja, FaMailBulk, FaKey, FaLock } from 'react-icons/fa';
 import { ToastContainer, toast } from 'react-toastify';
@@ -140,90 +142,101 @@ const Register = () => {
   return (
     <>
     <ToastContainer />
-    <Container className='d-flex justify-content-center align-items-center row-cols-1 row-cols-md-2 row-cols-lg-2 row-cols-xl-3'>
-      <Card>
-        <Card.Header className='text-center' >Register Form</Card.Header>
-        <Card.Body>
-          <Form onSubmit={handleSubmit}>
-            <Form.Group className="mb-3">
-              <Form.Label htmlFor='name'> 
-                <FaFileSignature/> Name
-              </Form.Label>
-              <Form.Control 
-                id="name"
-                autoComplete='off' 
-                type="text"
-                placeholder="Enter Your Name"
-                required
-                aria-invalid={validName ? "false" : "true"}
-                onChange={(e) => setName(e.target.value)}
-                value={name}
-              />
-            </Form.Group>
-            <Form.Group className="mb-3">
-              <Form.Label htmlFor="username">  
-                <FaUserNinja/> Choose A Username
-              </Form.Label>
-              <Form.Control 
-                id='username'
-                type="text" 
-                placeholder="Enter Username" 
-                autoComplete='off' 
-                required
-                onChange={(e) => setUser(e.target.value)}
-                aria-describedby="nidnote"
-                value={user}
-              />
-              <Form.Text className="text-muted">
-                The choosen username will appear whenever you interact in our Website.
-              </Form.Text>
-            </Form.Group>
-            <Form.Group className="mb-3">
-              <Form.Label htmlFor="email"> 
-                <FaMailBulk/> Email address
-              </Form.Label>
-              <Form.Control
-                id="email"
-                type="email" 
-                placeholder="Enter email" 
-                required
-                onChange={(e) => setEmail(e.target.value)}
-                value={email}
-              />
-            </Form.Group>
-            <Form.Group className="mb-3">
-              <Form.Label htmlFor="password"> <FaKey/> Password</Form.Label>
-              <Form.Control 
-                type="password" 
-                placeholder="Password" 
-                id="password"
-                onChange={(e) => setPassword(e.target.value)}
-                required
-                aria-describedby="pwdnote"
-                value={password}
-              />
-              <Form.Text className="text-muted">
-                Choose a strong password!
-              </Form.Text>
-            </Form.Group>
-            <Form.Group className="mb-3">
-              <Form.Label htmlFor="confirm_pwd"> <FaLock/> Confirm Password</Form.Label>
-              <Form.Control 
-                type="password" 
-                placeholder="Password Confirmation" 
-                id="confirm_pwd"
-                onChange={(e) => setMatch(e.target.value)}
-                required
-                aria-describedby="confirmnote"
-                value={match}
-              />
-            </Form.Group>
-            <Button variant="primary" type="submit">
-              Register
-            </Button>
-          </Form>
-        </Card.Body>
-      </Card>
+    <Container style={{ height: "100vh" }} className='d-flex justify-content-center align-items-center'>
+      <Row className="col-lg-9 bg-light">
+  
+      <Col className="">
+        <Card className="border-0 bg-light">
+          <Card.Header className='text-center' >Register Form</Card.Header>
+          <Card.Body>
+            <Form onSubmit={handleSubmit} className="row">
+              <Form.Group className="mb-3 col-md-6">
+                <Form.Label htmlFor='name'> 
+                  <FaFileSignature/> Name
+                </Form.Label>
+                <Form.Control 
+                  id="name"
+                  autoComplete='off' 
+                  type="text"
+                  placeholder="Enter Your Name"
+                  required
+                  aria-invalid={validName ? "false" : "true"}
+                  onChange={(e) => setName(e.target.value)}
+                  value={name}
+                  className="rounded-0 border-0"
+                />
+              </Form.Group>
+              <Form.Group className="mb-3 col-md-6">
+                <Form.Label htmlFor="username">  
+                  <FaUserNinja/> Choose A Username
+                </Form.Label>
+                <Form.Control 
+                  id='username'
+                  type="text" 
+                  placeholder="Enter Username" 
+                  autoComplete='off' 
+                  required
+                  onChange={(e) => setUser(e.target.value)}
+                  aria-describedby="nidnote"
+                  value={user}
+                  className="rounded-0 border-0"
+                />
+                <Form.Text className="text-muted">
+                  The choosen username will appear whenever you interact in our Website.
+                </Form.Text>
+              </Form.Group>
+              <Form.Group className="mb-3">
+                <Form.Label htmlFor="email"> 
+                  <FaMailBulk/> Email address
+                </Form.Label>
+                <Form.Control
+                  id="email"
+                  type="email" 
+                  placeholder="Enter email" 
+                  required
+                  onChange={(e) => setEmail(e.target.value)}
+                  value={email}
+                  className="rounded-0 border-0"
+                />
+              </Form.Group>
+              <Form.Group className="mb-3 col-md-6">
+                <Form.Label htmlFor="password"> <FaKey/> Password</Form.Label>
+                <Form.Control 
+                  type="password" 
+                  placeholder="Password" 
+                  id="password"
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                  aria-describedby="pwdnote"
+                  value={password}
+                  className="rounded-0 border-0"
+                />
+                <Form.Text className="text-muted">
+                  Choose a strong password!
+                </Form.Text>
+              </Form.Group>
+              <Form.Group className="mb-3 col-md-6">
+                <Form.Label htmlFor="confirm_pwd"> <FaLock/> Confirm Password</Form.Label>
+                <Form.Control 
+                  type="password" 
+                  placeholder="Password Confirmation" 
+                  id="confirm_pwd"
+                  onChange={(e) => setMatch(e.target.value)}
+                  required
+                  aria-describedby="confirmnote"
+                  value={match}
+                  className="rounded-0 border-0"
+                />
+              </Form.Group>
+              <Button variant="primary" className="rounded-0" type="submit">
+                Register
+              </Button>
+            </Form>
+          </Card.Body>
+        </Card>
+      </Col>
+      </Row>
+      
     </Container>
     </>
   )

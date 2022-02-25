@@ -2,12 +2,16 @@ import Container from 'react-bootstrap/Container';
 import Card from 'react-bootstrap/Card';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 import { FaMailBulk, FaKey } from 'react-icons/fa';
 import { useState, useContext } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import api from '../../services/Api';
 import AuthContext from '../../services/AuthProvider';
+import Logo from '../../assets/images/login.svg'
+import Kurama from '../../assets/images/KuramaIT.png'
 
 const LOGIN_URL = '/login'
 
@@ -45,19 +49,19 @@ const Login = () => {
       const accessToken = response?.data?.accessToken;
       setAuth({ email, password, accessToken })
       setSuccess(true);
-      setPassword('');
-      setEmail('');
+      //setPassword('');
+      //setEmail('');
     } catch (error) {
       if(error.response){
         if(error.response.status === 401){
           setErrorMsg("Unrecognized Credentials!");
           setSuccess(false);
         }else{
-          setErrorMsg("Error on server, try again later")
+          setErrorMsg("Error on server, try again later");
           setSuccess(false);
         }
       }else if(error.request){
-        setErrorMsg("No Response from server, try again later")
+        setErrorMsg("No Response from server, try again later");
         setSuccess(false);
       }else{
         setErrorMsg("Unknown error!");
@@ -70,42 +74,66 @@ const Login = () => {
   return (
     <>
     <ToastContainer />
-    <Container className='d-flex justify-content-center align-items-center row-cols-1 row-cols-md-2 row-cols-lg-2 row-cols-xl-3'>
-      <Card>
-        <Card.Header className='text-center' >Login Form</Card.Header>
-        <Card.Body>
-          <Form onSubmit={handleSubmit}>
-            <Form.Group className="mb-3">
-              <Form.Label htmlFor="email"> 
-                <FaMailBulk/> Email address
-              </Form.Label>
-              <Form.Control 
-                type="email" 
-                id="email"
-                placeholder="Enter email" 
-                autocomplete="off"
-                onChange={(e) => setEmail(e.target.value)}
-                value={email}
-                required
-              />
-            </Form.Group>
-            <Form.Group className="mb-3">
-              <Form.Label htmlFor="password"> <FaKey/> Password</Form.Label>
-              <Form.Control 
-                type="password" 
-                placeholder="Password" 
-                id="password"
-                onChange={(e) => setPassword(e.target.value)}
-                value={password}
-                required
-              />
-            </Form.Group>
-            <Button variant="primary" type="submit">
-              Login
-            </Button>
-          </Form>
-        </Card.Body>
-      </Card>
+    <Container style={{ height: "100vh" }} className='d-flex justify-content-center align-items-center'>
+      <Row className="bg-light col-lg-9">
+        <Col className="d-none d-md-block">
+          <div className='mb-4'>
+            <img
+              className='img-fluid'
+              src={Kurama} 
+              alt="KuramaIT" 
+              width="250"
+            />
+          </div>
+         <div>
+            <img
+              className='img-fluid'
+              src={Logo} 
+              alt="KuramaIT" 
+              width="250"
+            />
+          </div>
+        </Col>
+        <Col>  
+          <Card className="border-0 bg-light">
+            <Card.Header className='text-center' >Login Form</Card.Header>
+              <Card.Body>
+                <Form onSubmit={handleSubmit} className="row">
+                  <Form.Group className="mb-3">
+                    <Form.Label htmlFor="email"> 
+                      <FaMailBulk/> Email address
+                    </Form.Label>
+                    <Form.Control 
+                      type="email" 
+                      id="email"
+                      placeholder="Enter email" 
+                      autocomplete="off"
+                      onChange={(e) => setEmail(e.target.value)}
+                      value={email}
+                      required
+                      className="rounded-0 border-0"
+                    />
+                  </Form.Group>
+                  <Form.Group className="mb-3">
+                    <Form.Label htmlFor="password"> <FaKey/> Password</Form.Label>
+                    <Form.Control 
+                      type="password" 
+                      placeholder="Password" 
+                      id="password"
+                      onChange={(e) => setPassword(e.target.value)}
+                      value={password}
+                      required
+                      className="rounded-0 border-0"
+                    />
+                  </Form.Group>
+                  <Button className="rounded-0" variant="primary" type="submit">
+                    Login
+                  </Button>
+                </Form>
+              </Card.Body>
+            </Card>
+        </Col>
+      </Row>
     </Container>
     </>
   )

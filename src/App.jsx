@@ -45,11 +45,10 @@ const App = () => {
     
         <div className="font-link smooth-scrooling" /*style={{ backgroundImage: `url(${background})` }}*/>
             {
-            // <>
-            //     <Register />
-            // </>
             <>
                 <Login />
+
+                <Register />
             </>
 
             /* <>
