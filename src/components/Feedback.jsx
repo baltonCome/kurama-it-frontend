@@ -8,8 +8,6 @@ import Button from 'react-bootstrap/Button';
 
 const Feedback = ({ feedback }) => {
 
-    const ratings = ["Terrible", " Bad", "Enough", "Good", "Awesome"];
-
     return (
     
         <Container>
@@ -26,7 +24,6 @@ const Feedback = ({ feedback }) => {
                                 ratingValue={ feedback.rating } 
                                 readonly={true}
                                 allowHalfIcon={true}
-                                tooltipArray={ratings}
                             />
                         </div> 
                     </Card.Subtitle>

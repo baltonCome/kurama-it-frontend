@@ -1,9 +1,20 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Job from './Job';
 import ReactPaginate from 'react-paginate';
 import Container from 'react-bootstrap/Container';
+import api from '../services/Api';
  
-const FetchJobs = ({ jobs }) => {
+const FetchJobs = () => {
+
+  const [jobs, setJobs] = useState([])
+
+  useEffect( () => {
+    api.get('')
+    .then((res) => {
+      setJobs(res.data.jobs)
+    })
+    .catch(error => console.log(error))
+  }, [])
 
   const [pageNumber, setPageNumber] = useState(0);
   const dataPerPage = 4;

@@ -9,14 +9,15 @@ import { AuthProvider } from './services/AuthProvider';
 const rootElement = document.getElementById("root");
 
 render(
-  <AuthProvider>
+  
     <Router>
-      <Routes>
-        <Route path="/" element={<App />} />
-        {/* <Route path="home" element={<Home />} />
-        <Route path="login" element={<Login />} /> */}
-      </Routes>
-    </Router>
-  </AuthProvider>,
+      <AuthProvider>
+        <Routes>
+          <Route path="/*" element={<App />} />
+          {/* <Route path="home" element={<Home />} />
+          <Route path="login" element={<Login />} /> */}
+        </Routes>
+      </AuthProvider>
+    </Router>,
   rootElement
 );
