@@ -8,47 +8,36 @@ import Post from '../assets/images/post.svg';
 
 const ForEmployers = () => {
 
+    const infos = [
+
+        { title: "Go through Profiles", text : "Check the skills, previous experiences of every user and what they have done!", img: Profiles },
+        { title: "Find the best Match", text : "Get the best candidates based on what kind of professional you are searching!", img: BestMatch },
+        { title: "Post jobs", text : "And you will see the best professionals from anywhere applying!", img: Post },
+    ];
+
     return (
 
-    <Container className="text-center py-5">
-        <h2 className='text-primary'> If you are an employer </h2>
-        <p className=""> Post a jod and find based on your requirements the professional who fits the best for the contract, internship or even freelance!</p>
-        <Row className="row-cols-1 row-cols-md-3 g-5">
-            <Col>
-                <Card className='h-100 bg-light border-light p-3 shadow'>
-                    <img src={Profiles} alt="" />
-                    <Card.Body>
-                        <Card.Title className='text-primary'>Go through Profiles</Card.Title>
-                        <Card.Text>
-                            Check the skills, previous experiences of every user and what they have done!
-                        </Card.Text>
-                    </Card.Body>
-                </Card>
-            </Col>
-            <Col>
-                <Card className='h-100 bg-light border-light p-3 shadow'>
-                    <img src={BestMatch} alt="" />
-                    <Card.Body>
-                        <Card.Title className='text-primary'>Find the best Match</Card.Title>
-                        <Card.Text>
-                            Get the best candidates based on what kind of professional you are searching!
-                        </Card.Text>
-                    </Card.Body>
-                </Card>
-            </Col>
-            <Col>
-                <Card className='h-100 bg-light border-light p-3 shadow'>
-                    <img src={Post} alt="" />
-                    <Card.Body>
-                        <Card.Title className='text-primary'>Post jobs</Card.Title>
-                        <Card.Text>
-                            And you will see the best professionals from anywhere applying!
-                        </Card.Text>
-                    </Card.Body>
-                </Card>
-            </Col>
-        </Row>
-    </Container>
+        <Container className="text-center py-5" id="employer">
+            <h2 className='text-primary'> If you are an employer </h2>
+            <p className=""> Post a jod and find based on your requirements the professional who fits the best for the contract, internship or even freelance!</p>
+            <Row className="row-cols-1 row-cols-md-3 g-5">
+                {
+                    infos.map((info, index) => (
+                        <Col key={index}>
+                            <Card className='h-100 bg-light border-light p-3 shadow'>
+                                <img src={info.img} alt="" />
+                                <Card.Title className='text-primary'> 
+                                    {info.title}
+                                </Card.Title>
+                                <Card.Text>
+                                    {info.text}
+                                </Card.Text>
+                            </Card>
+                        </Col>
+                    )) 
+                }
+            </Row>
+        </Container>
     )
 };
 

@@ -6,14 +6,18 @@ import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import FormControl from 'react-bootstrap/FormControl'; 
-import { FaSearch } from 'react-icons/fa';
+import { FaSearch, FaArrowCircleDown } from 'react-icons/fa';
+//import { useRef } from 'react';
 
 const Header = () => {
+
+    //const employerRef = useRef(null);
+    //const scrollToEmployer = () => employerRef.current.scrollIntoView();
 
     return(
         <div className="">
             <Navmenu />
-            <Container>
+            <Container style={{ height: "100vh" }} className='justify-content-center align-items-center'>
                 <div className='d-flex justify-content-center'>
                     <Form className="d-flex mt-3 w-75">
                         <FormControl
@@ -47,7 +51,13 @@ const Header = () => {
                             alt="KuramaIT"
                         />
                     </Col>
+                    <div >
+                    </div>
+                    
                 </Row>
+                <div className='text-center'>
+                    <Button className="rounded-pill" onClick> <FaArrowCircleDown /> </Button>
+                </div>
             </Container>
         </div>   
     )
