@@ -14,6 +14,11 @@ import Card from 'react-bootstrap/Card'
 import Select from 'react-select';
 import makeAnimated from 'react-select/animated';
 import countriesApi from '../services/Countries';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import api from '../services/Api';
+
+const NEW_JOB = '/new-job';
 
 const PostJob = () => {
 
@@ -37,6 +42,23 @@ const PostJob = () => {
     const [descriptionFocus, setDescriptionFocus] = useState(false);
     const skillsRef = useRef();
     const descriptionRef = useRef();
+    const [success, setSuccess] = useState(false);
+    const [errorMsg, setErrorMsg] = useState('');
+
+    const error = () => 
+    toast.error(errorMsg, {
+    position: "top-center"
+    });
+
+    const requiredFields = () => 
+    toast.info("All fields except <Required skills>, are required!", {
+        position: "top-center"
+    });
+
+    const dataSubmited = () => 
+    toast.success("Job Posted!", {
+        position: "top-center"
+    });
 
     const timePeriods = [
         { value: 'Full Time Job', label: 'Full Time Job' },
@@ -147,7 +169,6 @@ const PostJob = () => {
 
     },[category])
 
-
     useEffect(() => {
 
         const anywhere = [{value : '', label: 'Anywhere'}];
@@ -182,6 +203,7 @@ const PostJob = () => {
 
         if(negotiable === true){
             setSalary('')
+            setSalaryPerTime([]);
         } 
     },[negotiable])
 
@@ -191,13 +213,58 @@ const PostJob = () => {
         descriptionRef.current.focus();
     },[])
 
-    const handleSubmit = () =>{
+    const handleSubmit = async (e) =>{
 
+        e.preventDefault();
+
+        if(category.length === 0 || subcategory.length === 0 || timePeriod.length === 0 || selectedCountry === 0){
+            requiredFields();
+            return;
+        }
+        
+        let values = "";
+        subcategory.forEach((sub) => {
+            values +=  sub['value']+", ";
+        })
+
+        console.log(jobTitle, category.value, values , jobType, timePeriod.value, countryState.value, selectedCountry.value, negotiable, salaryPerTime.value, salary, requiredSkills,description);
+        
+        try{
+            const response = await api.post(NEW_JOB, 
+            JSON.stringify({ title: jobTitle, category: category.value, subcategory: values, job_type: jobType, location: selectedCountry.value+", "+countryState.value, salary, salaryPer: salaryPerTime.value, time_period: timePeriod.value, description, required_skills: requiredSkills }),{
+                headers: {'Content-Type': 'application/json'},
+                withCredentials: true
+            })
+            console.log(response.data);
+            setSuccess(true);
+            setJobTitle('');
+            setCategory([]);
+            setSubcategory([]);
+            setJobType('');
+            setTimePeriod([]);
+            setSelectedCountry([]);
+            setCountryState([]);
+            setSalaryPerTime([]);
+            setSalary(0);
+            setRequiredSkills('');
+            setDescription('');
+        }catch(error){
+            setSuccess(false);
+            if(error.response){
+                setErrorMsg("Error on server, try again later");
+            }else if(error.request){
+                setErrorMsg("No Response from server, try again later");
+            }else{
+                setErrorMsg("Unknown error!")
+            }
+        }
+        success ? dataSubmited() : error();
     }
 
     return (
         <div className="my-5">
             <Container>
+                <ToastContainer />
                 <Card className="border-0">
                     <Card.Body className="p-2">   
                         <div className="text-center mb-5">

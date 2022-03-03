@@ -130,8 +130,6 @@ const Register = () => {
         }
       }else if(error.request){
         setErrorMsg("No Response from server, try again later")
-      }else if(error.response.status === 422){
-        setErrorMsg("Email or Username already taken, try to change and try again!");
       }else{
         setErrorMsg("Unknown error!")
       }
