@@ -44,15 +44,15 @@ const FindJobs = () => {
                         <ListGroup>
                             <ButtonGroup vertical>
                                 {
-                                categories.map((category, index) => (
-                                    <ListGroup.Item id={index} className="border-0">
-                                    <Form.Check 
-                                        type="checkbox"
-                                        id={index}
-                                        label={ category.value }
-                                    />
-                                    </ListGroup.Item>
-                                )) 
+                                    categories.map((category, index) => (
+                                        <ListGroup.Item id={index} className="border-0">
+                                        <Form.Check 
+                                            type="checkbox"
+                                            id={index}
+                                            label={ category.value }
+                                        />
+                                        </ListGroup.Item>
+                                    )) 
                                 }
                             </ButtonGroup>
                         </ListGroup>
