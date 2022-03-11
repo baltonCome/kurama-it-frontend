@@ -19,7 +19,7 @@ const FetchUsers = () => {
     }, [])
 
     const [pageNumber, setPageNumber] = useState(0);
-    const dataPerPage = 6;
+    const dataPerPage = 12;
     const seenPages = pageNumber * dataPerPage;
     const pageCount = Math.ceil(users.length/dataPerPage);
 

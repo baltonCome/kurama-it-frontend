@@ -3,8 +3,7 @@ import Container from 'react-bootstrap/Container';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import Logo from '../assets/images/KuramaIT.png';
 import Nav from 'react-bootstrap/Nav';
-//import Row from 'react-bootstrap/Row';
-//import Col from 'react-bootstrap/Col';
+import { NavLink } from 'react-router-dom';
 
 const Navmenu = () => {
 
@@ -12,7 +11,7 @@ const Navmenu = () => {
         <Navbar bg="light" expand="lg" sticky='top'>
             <Container fluid>
                 <Navbar.Toggle bsPrefix='navbar-toggler' aria-controls="offcanvasNavbar" className="border-0"/>
-                <Navbar.Brand href='#'>
+                <Navbar.Brand to='#'>
                     <img
                         src={Logo}
                         width="150"
@@ -23,9 +22,16 @@ const Navmenu = () => {
                 </Navbar.Brand> 
                 <div className='d-none d-lg-block'>
                     <Nav className="justify-content-end flex-grow-1 pe-3">
-                        <Nav.Link href="#"> <div className="rounded-pill btn btn-outline-primary"> Home </div> </Nav.Link>
-                        <Nav.Link href="#"> <div className="rounded-pill btn btn-outline-primary"> Register </div> </Nav.Link>
-                        <Nav.Link href="#"> <div className="rounded-pill btn btn-outline-primary"> Login </div> </Nav.Link>
+                        <NavLink className="link-primary btn" to="/"> Home 
+                        </NavLink>
+                        <NavLink className="link-primary btn" to="/jobs"> Jobs
+                        </NavLink>
+                        <NavLink className="link-primary btn" to="/new-job"> Post Job 
+                        </NavLink>
+                        <NavLink className="link-primary btn" to="/users"> See Profiles
+                        </NavLink>
+                        <NavLink className="link-primary btn" to="/register"> Register
+                        </NavLink>
                     </Nav>
                 </div>
                 <Navbar.Offcanvas
@@ -38,9 +44,16 @@ const Navmenu = () => {
                 </Offcanvas.Header>
                 <Offcanvas.Body>
                     <Nav className="justify-content-end flex-grow-1 pe-3">
-                        <Nav.Link href="#"> <div className="rounded-pill btn btn-outline-primary"> Home </div> </Nav.Link>
-                        <Nav.Link href="#"> <div className="rounded-pill btn btn-outline-primary"> Register </div> </Nav.Link>
-                        <Nav.Link href="#"> <div className="rounded-pill btn btn-outline-primary"> Login </div> </Nav.Link>
+                        <NavLink className="link-primary btn" to="/"> Home 
+                        </NavLink>
+                        <NavLink className="link-primary btn" to="/jobs"> Jobs
+                        </NavLink>
+                        <NavLink className="link-primary btn" to="/new-job"> Post Job 
+                        </NavLink>
+                        <NavLink className="link-primary btn" to="/users"> See Profiles
+                        </NavLink>
+                        <NavLink className="link-primary btn" to="/register"> Register
+                        </NavLink>
                     </Nav>
                 </Offcanvas.Body>
                 </Navbar.Offcanvas>

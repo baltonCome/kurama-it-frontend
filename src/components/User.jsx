@@ -12,7 +12,7 @@ const User = ({ user }) => {
                     src="holder.js/100px180?text=Image cap" 
                 />
                 <Card.Body>
-                    <Card.Title className="fw-bold">
+                    <Card.Title className="fw-bold text-center">
                         { user.username }
                     </Card.Title>
                     <Card.Text className="text-center">
