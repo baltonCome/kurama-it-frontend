@@ -8,12 +8,12 @@ const rootElement = document.getElementById("root");
 
 render(
   
-    <Router>
-      <AuthProvider>
-        <Routes>
-          <Route path="/*" element={<App />} />
-        </Routes>
-      </AuthProvider>
-    </Router>,
+  <Router>
+    <AuthProvider>
+      <Routes>
+        <Route path="/*" element={<App />} />
+      </Routes>
+    </AuthProvider>
+  </Router>,
   rootElement
 );

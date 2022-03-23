@@ -1,4 +1,6 @@
 import React from 'react'
+import Navmenu from '../components/Navmenu';
+import Footer from '../components/Footer';
 import Container from 'react-bootstrap/esm/Container';
 import Col from 'react-bootstrap/esm/Col';
 import Row from 'react-bootstrap/esm/Row';
@@ -35,6 +37,8 @@ const FindJobs = () => {
     ];
 
     return (
+        <>
+        <Navmenu/>
         <Container>
             <Row>
                 <Col md={3} className="d-none d-md-block mt-3" >
@@ -104,6 +108,8 @@ const FindJobs = () => {
                 </Col>
             </Row>
         </Container>
+        <Footer />
+        </>
     )
 }
 

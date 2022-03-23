@@ -5,20 +5,25 @@ import Button from 'react-bootstrap/Button';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { FaMailBulk, FaKey } from 'react-icons/fa';
-import { useState, useContext } from 'react';
+import { useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import api from '../../services/Api';
-import AuthContext from '../../services/AuthProvider';
+import useAuth from '../../services/useAuth';
 import Logo from '../../assets/images/login.svg'
 import Kurama from '../../assets/images/KuramaIT.png'
+import { useNavigate, useLocation } from 'react-router-dom';
 
 const LOGIN_URL = '/login'
 
 const Login = () => {
 
-  const { setAuth } = useContext(AuthContext);
-  const [email, setEmail] = useState('');
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
+
+  const { setAuth } = useAuth();
+  const [email, setEmail] = useState('') ;
   const [password, setPassword] = useState('');
   const [success, setSuccess] = useState(false);
   const [errorMsg, setErrorMsg] = useState('');
@@ -45,12 +50,14 @@ const Login = () => {
           withCredentials: true
         }
       );
-      console.log(JSON.stringify(response))
-      const accessToken = response?.data?.accessToken;
-      setAuth({ email, password, accessToken })
+      //console.log(JSON.stringify(response))
+      const token = response?.data?.token;
+      console.log(response.data)
+      setAuth( response.data )
       setSuccess(true);
       //setPassword('');
       //setEmail('');
+      navigate(from, {replace: true});
     } catch (error) {
       if(error.response){
         if(error.response.status === 401){

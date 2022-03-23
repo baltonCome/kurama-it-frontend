@@ -1,3 +1,5 @@
+import Navmenu from '../components/Navmenu';
+import Footer from '../components/Footer';
 import { useState, useEffect} from 'react'
 import Container from 'react-bootstrap/esm/Container';
 import Card from 'react-bootstrap/esm/Card';
@@ -17,6 +19,8 @@ const Profile = () => {
     },[])
 
     return (
+        <>
+        <Navmenu />
         <div>
             <div style={{ height: "25vh" }} className='bg-light'>
                 <Image 
@@ -73,6 +77,8 @@ const Profile = () => {
                 </Row>
             </Container>
         </div>
+        <Footer />
+        </>
     )
 }
 

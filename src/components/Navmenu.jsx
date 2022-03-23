@@ -22,15 +22,15 @@ const Navmenu = () => {
                 </Navbar.Brand> 
                 <div className='d-none d-lg-block'>
                     <Nav className="justify-content-end flex-grow-1 pe-3">
-                        <NavLink className="link-primary btn" to="/"> Home 
+                        <NavLink className="link-primary mx-2" to="/"> Home 
                         </NavLink>
-                        <NavLink className="link-primary btn" to="/jobs"> Jobs
+                        <NavLink className="link-primary mx-2" to="/jobs"> Jobs
                         </NavLink>
-                        <NavLink className="link-primary btn" to="/new-job"> Post Job 
+                        <NavLink className="link-primary mx-2" to="/new-job"> Post Job 
                         </NavLink>
-                        <NavLink className="link-primary btn" to="/users"> See Profiles
+                        <NavLink className="link-primary mx-2" to="/users"> See Profiles
                         </NavLink>
-                        <NavLink className="link-primary btn" to="/register"> Register
+                        <NavLink className="link-primary mx-2" to="/register"> Register
                         </NavLink>
                     </Nav>
                 </div>
@@ -44,7 +44,7 @@ const Navmenu = () => {
                 </Offcanvas.Header>
                 <Offcanvas.Body>
                     <Nav className="justify-content-end flex-grow-1 pe-3">
-                        <NavLink className="link-primary btn" to="/"> Home 
+                        <NavLink className="link-primary btn " to="/"> Home
                         </NavLink>
                         <NavLink className="link-primary btn" to="/jobs"> Jobs
                         </NavLink>

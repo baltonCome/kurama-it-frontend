@@ -1,4 +1,6 @@
 import React from 'react';
+import Navmenu from '../components/Navmenu';
+import Footer from '../components/Footer';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import { FaSearch } from 'react-icons/fa';
@@ -10,6 +12,8 @@ import FormControl from 'react-bootstrap/FormControl';
 const ListUsers = () => {
 
     return (
+        <>
+        <Navmenu />
         <Container>
             <Row>
                 <div className='d-flex justify-content-center'>
@@ -28,6 +32,9 @@ const ListUsers = () => {
                 </div>
             </Row>
         </Container>
+        <Footer />
+        </>
+        
     )
 }
 

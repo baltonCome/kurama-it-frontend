@@ -6,6 +6,9 @@ import PostJob from "./pages/PostJob";
 import ListUsers from "./pages/ListUsers"
 import Profile from "./pages/Profile";
 import { Route } from 'react-router-dom';
+import Register from "./components/auth/Register";
+import Login from "./components/auth/Login";
+import RequireAuth from "./services/RequireAuth";
 //import background from './assets/images/2.jpg';
 
 
@@ -17,9 +20,14 @@ const App = () => {
             <Routes>
                 <Route index element={ <Home />} />
                 <Route path="jobs" element={ <FindJobs />} />
-                <Route path="new-job" element={ <PostJob />} />
+                <Route path="register" element={< Register/>}/>
+                <Route path="login" element={<Login />} />
                 <Route path="users" element={ <ListUsers />} >
                     <Route path=":userId" element={ <Profile />} />
+                </Route>
+
+                <Route element={ <RequireAuth />} >
+                    <Route path="new-job" element={ <PostJob />} />
                 </Route>
             </Routes>
         </div>
