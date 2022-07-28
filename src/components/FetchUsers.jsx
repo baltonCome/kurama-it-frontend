@@ -3,20 +3,37 @@ import User from './User';
 import Row from 'react-bootstrap/Row';
 import ReactPaginate from 'react-paginate';
 import Container from 'react-bootstrap/Container';
-import api from '../services/Api';
+import useAxiosPrivate from '../services/useAxiosPrivate';
 
 const FetchUsers = () => {
 
     const [users, setUsers] = useState([])
+    const api = useAxiosPrivate();
 
     useEffect( () => {
-        api.get('/users')
-        .then((res) => {
-        setUsers(res.data.users)
-        console.log(res.data.users);
-        })
-        .catch(error => console.log(error))
-    }, [])
+
+        let mounted = true;
+        const controller = new AbortController();
+
+        const getUsers = async () => {
+            try{
+                const response = await api.get('/users', {
+                    signal: controller.signal
+                });
+                console.log(response.data);
+                mounted && setUsers(response.data.users);
+            }catch (err){
+                console.error(err);
+            }
+        }
+
+        getUsers();
+
+        return () => {
+            mounted = false;
+            controller.abort();
+        }
+    }, [api])
 
     const [pageNumber, setPageNumber] = useState(0);
     const dataPerPage = 12;

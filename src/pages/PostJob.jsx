@@ -18,11 +18,13 @@ import countriesApi from '../services/Countries';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import api from '../services/Api';
+import useRefreshToken from '../services/useRefreshToken';
+import useAuth from '../services/useAuth';
 
 const NEW_JOB = '/new-job';
 
 const PostJob = () => {
-
+    const refresh = useRefreshToken();
     const [jobTitle, setJobTitle] = useState([]);
     const [category, setCategory] = useState([]);
     const [subcategory, setSubcategory] = useState([]);
@@ -217,6 +219,7 @@ const PostJob = () => {
     },[])
 
 
+    const { auth } = useAuth();
 
     const handleSubmit = async (e) =>{
 
@@ -236,11 +239,16 @@ const PostJob = () => {
         
         try{
             const response = await api.post(NEW_JOB, 
-            JSON.stringify({ title: jobTitle, category: category.value, subcategory: values, job_type: jobType, location: selectedCountry.value+", "+countryState.value, salary, salaryPer: salaryPerTime.value, time_period: timePeriod.value, description, required_skills: requiredSkills }),{
-                headers: {'Content-Type': 'application/json'},
+            JSON.stringify({ title: jobTitle, category: category.value, subcategory: values, job_type: jobType, location: selectedCountry.value+", "+countryState.value, salary, salaryPer: salaryPerTime.value, time_period: timePeriod.value, description, required_skills: requiredSkills }),
+            {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${auth.token}`
+                },
                 withCredentials: true
             })
             console.log(response.data);
+            console.log('SAVAPRESTATENT'+auth.token);
             setSuccess(true);
             setJobTitle('');
             setCategory([]);
@@ -265,6 +273,7 @@ const PostJob = () => {
         }
         success ? dataSubmited() : error();
     }
+    
 
     return (
         <>
@@ -273,6 +282,7 @@ const PostJob = () => {
                 <Container>
                     <ToastContainer />
                     <Card className="border-0">
+                        <Button onClick= {() => refresh()}>Refresh</Button>
                         <Card.Body className="p-2">   
                             <div className="text-center mb-5">
                                 <h2 className="fw-bold mb-1"> Find The Right Professional </h2>

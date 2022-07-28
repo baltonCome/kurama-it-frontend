@@ -21,12 +21,13 @@ const Job = ({ job }) => {
                         <Card.Title> 
                             <div className="h5">
                                 { job.title }
-                            </div> 
+                                <div className="text-muted my-2 font-weight-light float-end small">
+                                { job.user.username}{',  '} { moment(job.created_at).fromNow() }!
+                                </div>
+                            </div>  
                         </Card.Title>
                         <Card.Subtitle>
-                            <div className="text-muted my-2 font-weight-light">
-                                { job.user.username}{',  '} { moment(job.created_at).fromNow() }!
-                            </div>
+                            
                             <h5 className="mb-2">
                                 <Badge className="mr-2" pill bg="secondary"> { job.job_type } </Badge>{' '} 
                                 <Badge pill bg="info"> {  job.location } </Badge>
@@ -45,11 +46,9 @@ const Job = ({ job }) => {
                                         {skill}
                                     </Badge>
                                 )) 
-                            }   
-                        </div>
-                        <div className='my-2'>
+                            } 
                             <Button variant='primary' className="float-end"> Apply </Button>
-                        </div>        
+                        </div>  
                     </Card.Body>
                 </Card>
             </Container>

@@ -10,8 +10,8 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import api from '../../services/Api';
 import useAuth from '../../services/useAuth';
-import Logo from '../../assets/images/login.svg'
-import Kurama from '../../assets/images/KuramaIT.png'
+import Logo from '../../assets/images/login.svg';
+import Kurama from '../../assets/images/KuramaIT.png'; 
 import { useNavigate, useLocation } from 'react-router-dom';
 
 const LOGIN_URL = '/login'
@@ -50,9 +50,8 @@ const Login = () => {
           withCredentials: true
         }
       );
-      //console.log(JSON.stringify(response))
-      const token = response?.data?.token;
       console.log(response.data)
+      console.log(response.data.token)
       setAuth( response.data )
       setSuccess(true);
       //setPassword('');
