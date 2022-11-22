@@ -282,7 +282,6 @@ const PostJob = () => {
                 <Container>
                     <ToastContainer />
                     <Card className="border-0">
-                        <Button onClick= {() => refresh()}>Refresh</Button>
                         <Card.Body className="p-2">   
                             <div className="text-center mb-5">
                                 <h2 className="fw-bold mb-1"> Find The Right Professional </h2>

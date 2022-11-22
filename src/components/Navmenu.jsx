@@ -30,8 +30,6 @@ const Navmenu = () => {
                         </NavLink>
                         <NavLink className="link-primary mx-2" to="/users"> See Profiles
                         </NavLink>
-                        <NavLink className="link-primary mx-2" to="/register"> Register
-                        </NavLink>
                     </Nav>
                 </div>
                 <Navbar.Offcanvas
@@ -51,8 +49,6 @@ const Navmenu = () => {
                         <NavLink className="link-primary btn" to="/new-job"> Post Job 
                         </NavLink>
                         <NavLink className="link-primary btn" to="/users"> See Profiles
-                        </NavLink>
-                        <NavLink className="link-primary btn" to="/register"> Register
                         </NavLink>
                     </Nav>
                 </Offcanvas.Body>

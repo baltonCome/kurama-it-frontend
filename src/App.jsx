@@ -9,6 +9,7 @@ import { Route } from 'react-router-dom';
 import Register from "./components/auth/Register";
 import Login from "./components/auth/Login";
 import RequireAuth from "./services/RequireAuth";
+import Missing from './pages/Missing';
 //import background from './assets/images/2.jpg';
 
 
@@ -29,6 +30,8 @@ const App = () => {
                 <Route element={ <RequireAuth />} >
                     <Route path="new-job" element={ <PostJob />} />
                 </Route>
+
+                <Route path='*' element={<Missing />} />
             </Routes>
         </div>
     )

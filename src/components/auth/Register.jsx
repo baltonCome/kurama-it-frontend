@@ -19,7 +19,6 @@ const REGISTER_URL = '/register';
 const Register = () => {
 
   const[name, setName] = useState('');
-  const[validName, setValidName] = useState(false);
 
   const[user, setUser] = useState('');
   const[validUser, setValidUser] = useState(false);
@@ -45,11 +44,6 @@ const Register = () => {
         position: "top-center"
     });
 
-  const validNameField = () => 
-    toast.warn("Only Letters allowed for name. [2-50] characters", {
-        position: "top-center"
-    });
-
   const validUserField = () => 
     toast.warn("Only letters, Numbers, underscores and ifens allowed for Username. [4-24] characters", {
         position: "top-center"
@@ -67,11 +61,6 @@ const Register = () => {
 
   useEffect(() => {
 
-    setValidName(NAME_REGEX.test(name));
-  },[name])
-
-  useEffect(() => {
-
     setValidUser(USER_REGEX.test(user));
   },[user])
 
@@ -85,10 +74,7 @@ const Register = () => {
 
     e.preventDefault();
 
-    if (!validName){
-      validNameField();
-      return
-    }else if (!validUser){
+    if (!validUser){
       validUserField();
       return
     }else if (!validPassword){
@@ -158,7 +144,6 @@ const Register = () => {
                   type="text"
                   placeholder="Enter Your Name"
                   required
-                  aria-invalid={validName ? "false" : "true"}
                   onChange={(e) => setName(e.target.value)}
                   value={name}
                   className="rounded-0 border-0"

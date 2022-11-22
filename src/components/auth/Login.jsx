@@ -12,6 +12,7 @@ import api from '../../services/Api';
 import useAuth from '../../services/useAuth';
 import Logo from '../../assets/images/login.svg';
 import Kurama from '../../assets/images/KuramaIT.png'; 
+import { NavLink } from 'react-router-dom';
 import { useNavigate, useLocation } from 'react-router-dom';
 
 const LOGIN_URL = '/login'
@@ -53,7 +54,7 @@ const Login = () => {
       console.log(response.data)
       console.log(response.data.token)
       setAuth( response.data )
-      setSuccess(true);
+      setSuccess(true);  
       //setPassword('');
       //setEmail('');
       navigate(from, {replace: true});
@@ -135,6 +136,8 @@ const Login = () => {
                   <Button className="rounded-0" variant="primary" type="submit">
                     Login
                   </Button>
+                  <p className="text-center" >No Account? <NavLink className="link-primary mx-2" to="/register"> Register
+                        </NavLink></p>
                 </Form>
               </Card.Body>
             </Card>
