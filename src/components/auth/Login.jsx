@@ -12,8 +12,7 @@ import api from '../../services/Api';
 import useAuth from '../../services/useAuth';
 import Logo from '../../assets/images/login.svg';
 import Kurama from '../../assets/images/KuramaIT.png'; 
-import { NavLink } from 'react-router-dom';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate, useLocation, Link } from 'react-router-dom';
 
 const LOGIN_URL = '/login'
 
@@ -71,6 +70,7 @@ const Login = () => {
         setErrorMsg("No Response from server, try again later");
         setSuccess(false);
       }else{
+        console.log(error)
         setErrorMsg("Unknown error!");
         setSuccess(false);
       }
@@ -136,8 +136,7 @@ const Login = () => {
                   <Button className="rounded-0" variant="primary" type="submit">
                     Login
                   </Button>
-                  <p className="text-center" >No Account? <NavLink className="link-primary mx-2" to="/register"> Register
-                        </NavLink></p>
+                  <p className="text-center" >No Account? <Link className="link-primary mx-2" to="/register">Register</Link></p>
                 </Form>
               </Card.Body>
             </Card>
